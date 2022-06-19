@@ -36,6 +36,7 @@ class Net(nn.Module):
         return output
 
 
+# 学習を実行する
 def train(args, model, device, train_loader, optimizer, epoch):
     model.train()
     for batch_idx, (data, target) in enumerate(train_loader):
@@ -58,7 +59,7 @@ def train(args, model, device, train_loader, optimizer, epoch):
             if args.dry_run:
                 break
 
-
+# 評価を実行する
 def test(model, device, test_loader):
     model.eval()
     test_loss = 0
@@ -175,7 +176,7 @@ def main():
     )
     # データセットを準備する
     dataset1 = datasets.MNIST(
-        INPUT_PATH, train=True, download=False, transform=transform
+        INPUT_PATH, train=True, download=True, transform=transform
     )
     dataset2 = datasets.MNIST(INPUT_PATH, train=False, transform=transform)
     train_loader = torch.utils.data.DataLoader(dataset1, **train_kwargs)

@@ -2,7 +2,8 @@
 MAKEFILE_DIR:=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 REPOGITORY=takumi2786
 NAME=mnist-runner
-SRC_PATH=/app/main.py
+SRC_PATH=/app/train.py
+
 
 docker/build:
 	docker build -t ${REPOGITORY}/${NAME} .
