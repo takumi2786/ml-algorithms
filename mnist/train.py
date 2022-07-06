@@ -20,8 +20,8 @@ class Net(nn.Module):
         self.fc1 = nn.Linear(9216, 128)
         self.fc2 = nn.Linear(128, 10)
 
-    def forward(self, x):
-        x = self.conv1(x)
+    def forward(self, x):# torch.Size([64, 1, 28, 28])
+        x = self.conv1(x)# torch.Size([64, 32, 26, 26])
         x = F.relu(x)
         x = self.conv2(x)
         x = F.relu(x)
@@ -159,6 +159,7 @@ def main():
     )
     args = parser.parse_args()
     use_cuda = not args.no_cuda and torch.cuda.is_available()
+    use_cuda = False
 
     torch.manual_seed(args.seed)
 
